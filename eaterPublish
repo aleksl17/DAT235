@@ -1,0 +1,26 @@
+import paho.mqtt.publish as publish
+import paho.mqtt.subscribe as subscribe
+import sys
+import time
+
+ipConnect = "localhost"
+
+def up(num: int):
+    publish.single("dat235/groupnine/joystick/up",num, hostname=ipConnect)
+    msg = subscribe.simple("dat235/groupnine/start#", hostname=ipConnect)
+    print(msg.payload)
+    
+def down(num: int):
+    publish.single("dat235/groupnine/joystick/down",num, hostname=ipConnect)
+    msg = subscribe.simple("dat235/groupnine/start#", hostname=ipConnect)
+    print(msg.payload)
+    
+def left(num: int):
+    publish.single("dat235/groupnine/joystick/left/",num, hostname=ipConnect)
+    msg = subscribe.simple("dat235/groupnine/start#", hostname=ipConnect)
+    print(msg.payload)
+    
+def right(num: int):
+    publish.single("dat235/groupnine/joystick/right",num, hostname=ipConnect)
+    msg = subscribe.simple("dat235/groupnine/start#", hostname=ipConnect)
+    print(msg.payload)
